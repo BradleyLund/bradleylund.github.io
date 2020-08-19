@@ -10,8 +10,7 @@ $(function() {
 				divs.splice(i,1)
 			}
 		}
-
-		console.log(divs)
+		
 		$(".current").transition({opacity: 1}, 2000, 'linear', function() {
 			$('.current').removeClass('current');
 			firstDiv = divs.first();
