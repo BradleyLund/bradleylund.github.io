@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Brad vs Damo arm wrestle</title>
+    </head>
+
+    <body>
+        <h1>Bradley Lund vs Damian Carlisle Armwrestle</h1>
+
+        <h2>Who will win?</h2>
+        <img class="profilePic" id="bradPic">
+        <img class="profilePic" id="damoPic">
+        <p id="countdown">
+
+        </p>
+        <script>
+            let timeOfFight = new Date("Jan 1, 2021 00:00:00").getTime();
+
+            var displayFunction = setInterval(function() {
+
+                let currentTime = new Date().getTime();
+
+                let distance = timeOfFight - currentTime;
+
+                let days = Math.floor(distance / (1000*60*60*24));
+                let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("countdown").innerHTML = days + "d " + hours + "h "+ minutes + "m " + seconds + "s ";
+
+
+            },1000)
+        </script>
+
+    </body>
+</html>
