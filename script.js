@@ -5,7 +5,7 @@ $(function() {
 
 		var divs = container.children();
 		for (let i=0;i<divs.length;i++) {
-			if (divs[i].id=="everything") {
+			if (divs[i].id=="everything"||divs[i].id=="projectsDiv") {
 				divs.splice(i,1)
 			}
 		}
