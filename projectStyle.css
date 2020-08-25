@@ -6,6 +6,16 @@ html,body {
     margin:0;
 }
 
+a {
+    color:white;
+}
+
+a:hover {
+    color: rgb(53, 231, 21);
+}
+    
+
+
 .gradients {
     height:100%;
 }
