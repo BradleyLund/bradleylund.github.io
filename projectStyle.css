@@ -13,6 +13,13 @@ a {
 a:hover {
     color: rgb(53, 231, 21);
 }
+
+p {
+  color: white;
+  align-items: center;
+  text-align: center;
+  padding: 0% 10% 0% 10%;
+}
     
 
 
