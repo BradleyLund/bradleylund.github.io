@@ -41,7 +41,7 @@ p {
     font-size: 3vw;
     z-index: 1000;
 }
-
+/* 
 .pink {
     background: #fc963f;
     background: -webkit-gradient(linear, top, bottom, color-stop(0%, #e02d6f), color-stop(100%, #fc963f));
@@ -90,7 +90,7 @@ p {
     background: -o-linear-gradient(top, #0fa9a8 0%, #c33764  100%);
     background: -ms-linear-gradient(top, #0fa9a8 0%, #c33764  100%);
     background: linear-gradient(top, #0fa9a8 0%, #c33764  100%); 
-}
+} */
   
   .frost {
     background: #000428 ;
