@@ -1,61 +1,118 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <link rel="stylesheet" type="text/css" href="projectStyle.css">
-    <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects — Bradley Lund</title>
+    <meta name="description" content="Projects by Bradley Lund — web applications and experiments built for fun and learning.">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7e4cf377d7.js" crossorigin="anonymous"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- <script src="jquery.transit.min.js"></script> -->
-    <!-- stop the transition by commenting above, don't want the transition on every page, it's a bit annoying -->
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="gradients">
-        <div id="projectsDiv">
-            <div class="project">
-                <a href="https://pacific-mountain-86944.herokuapp.com/" target="_blank">
-                    <h1>PassportPals</h1>
-                </a>
-                <p>A project where I scraped wikipedia's visa information for the countries of the world so that you and
-                    a
-                    friend from another country can see where you can both travel to visa-free</p>
-                <a href="https://github.com/BradleyLund/PassportPals" target="_blank">GitHub Code <i
-                        class="fab fa-github"></i></a>
-
+    <nav>
+        <div class="nav-inner">
+            <a href="./index.html" class="nav-name">Bradley Lund</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links">
+                <a href="./about.html">About</a>
+                <a href="./projects.html">Projects</a>
+                <a href="https://bradleylund.github.io/blog/">Blog</a>
+                <a href="./links.html">Links</a>
             </div>
+        </div>
+    </nav>
 
+    <main class="page-content">
+        <div class="container">
 
-            <div class="project">
-                <a href="https://bradleylund.github.io/VirtualUkulele/" target="_blank">
-                    <h1>Virtual Ukulele</h1>
-                </a>
-                <p>A fun project that I hope to work on in the future inspired by <a href="https://virtualpiano.net/"
-                        target="_blank">Virtual Piano</a></p>
-                <a href="https://github.com/BradleyLund/VirtualUkulele" target="_blank">GitHub Code <i
-                        class="fab fa-github"></i></a>
-            </div>
+            <header class="page-header reveal">
+                <h1>Projects</h1>
+                <p>Things I've built — mostly for fun, always for learning.</p>
+                <div class="rule"></div>
+            </header>
 
+            <div class="projects-grid">
 
+                <div class="project-card reveal">
+                    <h3>PassportPals</h3>
+                    <p>
+                        A tool that scrapes Wikipedia's visa requirement data so that you and a
+                        friend from different countries can discover where you can both travel visa-free.
+                    </p>
+                    <div class="project-tags">
+                        <span>Node.js</span>
+                        <span>Web Scraping</span>
+                        <span>Express</span>
+                        <span>Heroku</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://pacific-mountain-86944.herokuapp.com/" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                        <a href="https://github.com/BradleyLund/PassportPals" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i> Source
+                        </a>
+                    </div>
+                </div>
 
-            <div class="project">
-                <a href="https://bradleylund.github.io/emojiEcommerce/" target="_blank">
-                    <h1>Emoji Ecommerce</h1>
-                </a>
-                <p>My display of a concept online store with full shopping cart functionality selling emoji's as NFT's
-                    using
-                    bootstrap 4.</p>
-                <a href="https://github.com/BradleyLund/emojiEcommerce" target="_blank">GitHub Code <i
-                        class="fab fa-github"></i></a>
+                <div class="project-card reveal">
+                    <h3>Virtual Ukulele</h3>
+                    <p>
+                        An interactive virtual instrument you can play in the browser. Inspired by
+                        Virtual Piano — a fun experiment in audio and user interaction.
+                    </p>
+                    <div class="project-tags">
+                        <span>JavaScript</span>
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>Web Audio</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://bradleylund.github.io/VirtualUkulele/" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                        <a href="https://github.com/BradleyLund/VirtualUkulele" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i> Source
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card full-width reveal">
+                    <h3>Emoji Ecommerce</h3>
+                    <p>
+                        A concept online store with full shopping cart functionality, selling emojis as NFTs.
+                        Built to explore ecommerce UI patterns and state management with vanilla JavaScript.
+                    </p>
+                    <div class="project-tags">
+                        <span>JavaScript</span>
+                        <span>Bootstrap 4</span>
+                        <span>Ecommerce</span>
+                        <span>Shopping Cart</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://bradleylund.github.io/emojiEcommerce/" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                        <a href="https://github.com/BradleyLund/emojiEcommerce" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i> Source
+                        </a>
+                    </div>
+                </div>
+
             </div>
 
         </div>
+    </main>
 
-
-    </div>
+    <script src="script.js"></script>
 
 </body>
 
