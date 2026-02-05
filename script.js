@@ -1,6 +1,131 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-  // ─── Active nav link ───
+  // ═══════════════════════════════════════════════
+  // Theme Picker
+  // ═══════════════════════════════════════════════
+
+  var themePicker = document.getElementById('themePicker');
+  var themeOptions = document.querySelectorAll('.theme-option');
+  var openButtons = document.querySelectorAll('#openThemePicker');
+
+  // Show theme picker if no theme is saved (first visit)
+  if (!localStorage.getItem('theme') && themePicker) {
+    setTimeout(function() {
+      themePicker.classList.add('active');
+    }, 500);
+  }
+
+  // Open theme picker on button click
+  openButtons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      if (themePicker) {
+        themePicker.classList.add('active');
+        updateSelectedOption();
+      }
+    });
+  });
+
+  // Close theme picker when clicking overlay (not the modal itself)
+  if (themePicker) {
+    themePicker.addEventListener('click', function(e) {
+      if (e.target === themePicker) {
+        themePicker.classList.remove('active');
+      }
+    });
+  }
+
+  // Update selected state based on current theme
+  function updateSelectedOption() {
+    var currentTheme = document.documentElement.getAttribute('data-theme') || 'minimal';
+    themeOptions.forEach(function(opt) {
+      if (opt.getAttribute('data-theme') === currentTheme) {
+        opt.classList.add('selected');
+      } else {
+        opt.classList.remove('selected');
+      }
+    });
+  }
+
+  // Handle theme selection
+  themeOptions.forEach(function(option) {
+    option.addEventListener('click', function() {
+      var theme = this.getAttribute('data-theme');
+
+      // Apply theme
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+
+      // Update selected state
+      themeOptions.forEach(function(opt) {
+        opt.classList.remove('selected');
+      });
+      this.classList.add('selected');
+
+      // Close picker after short delay
+      setTimeout(function() {
+        if (themePicker) {
+          themePicker.classList.remove('active');
+        }
+      }, 200);
+    });
+  });
+
+
+  // ═══════════════════════════════════════════════
+  // Gradient Cycling (for gradients theme)
+  // ═══════════════════════════════════════════════
+
+  var gradientsContainer = document.querySelector('.gradients-bg');
+
+  if (gradientsContainer) {
+    function cycleGradients() {
+      var current = gradientsContainer.querySelector('.gradient.current');
+      if (!current) return;
+
+      // Fade current gradient in over 7.5s
+      current.style.transition = 'opacity 7.5s linear';
+      current.style.opacity = '1';
+
+      // Safety timeout in case transitionend doesn't fire
+      var safety = setTimeout(function () {
+        advance(current);
+      }, 8000);
+
+      current.addEventListener('transitionend', function handler() {
+        current.removeEventListener('transitionend', handler);
+        clearTimeout(safety);
+        advance(current);
+      });
+    }
+
+    function advance(current) {
+      current.classList.remove('current');
+
+      // Get the first gradient div and make it the next to cycle
+      var allGradients = gradientsContainer.querySelectorAll('.gradient');
+      var next = allGradients[0];
+
+      // Set up next: opacity 0, no transition, move to end (top of stack)
+      next.style.transition = 'none';
+      next.style.opacity = '0';
+      next.classList.add('current');
+      gradientsContainer.appendChild(next);
+
+      // Force reflow before starting next transition
+      void next.offsetHeight;
+
+      cycleGradients();
+    }
+
+    // Small delay to ensure DOM is fully painted
+    setTimeout(cycleGradients, 200);
+  }
+
+
+  // ═══════════════════════════════════════════════
+  // Active Nav Link
+  // ═══════════════════════════════════════════════
+
   var navLinks = document.querySelectorAll('.nav-links a');
   var currentPath = window.location.pathname;
 
@@ -15,7 +140,10 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 
-  // ─── Mobile nav toggle ───
+  // ═══════════════════════════════════════════════
+  // Mobile Nav Toggle
+  // ═══════════════════════════════════════════════
+
   var toggle = document.querySelector('.nav-toggle');
   var navLinksContainer = document.querySelector('.nav-links');
 
@@ -32,7 +160,10 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 
-  // ─── Scroll reveal (Intersection Observer) ───
+  // ═══════════════════════════════════════════════
+  // Scroll Reveal (Intersection Observer)
+  // ═══════════════════════════════════════════════
+
   var reveals = document.querySelectorAll('.reveal');
 
   if (reveals.length > 0 && 'IntersectionObserver' in window) {
