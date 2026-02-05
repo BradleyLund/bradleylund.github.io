@@ -627,6 +627,11 @@ nav {
     transform: translateY(-2px);
 }
 
+/* Theme toggle in hero (more spacing from social icons) */
+.hero .theme-toggle {
+    margin-top: 1.75rem;
+}
+
 /* Staggered fade-up */
 .fade-up {
     opacity: 0;
