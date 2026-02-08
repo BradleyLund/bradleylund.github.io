@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bradley Lund - Business Analyst Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Calibri', 'Arial', sans-serif;
+            line-height: 1.35;
+            color: #333;
+            background: #fff;
+            padding: 0 0.5in 0.4in 0.5in;
+            max-width: 8.5in;
+            margin: 0 auto;
+        }
+
+        @media print {
+            body {
+                padding: 0 0.5in 0.4in 0.5in;
+            }
+        }
+
+        header {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 18px;
+            border-bottom: 2px solid #2c3e50;
+            padding-top: 0;
+            padding-bottom: 8px;
+        }
+
+        h1 {
+            font-size: 26px;
+            color: #2c3e50;
+            margin-bottom: 2px;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 13px;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .contact-info {
+            font-size: 11px;
+            color: #555;
+            margin-top: 4px;
+        }
+
+        .contact-info a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        @media print {
+            .contact-info a {
+                color: #3498db;
+                text-decoration: underline;
+            }
+
+            .contact-info a[href]:after {
+                content: "";
+            }
+        }
+
+        h2 {
+            font-size: 15px;
+            color: #2c3e50;
+            background: #ecf0f1;
+            padding: 3px 8px;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            border-left: 3px solid #3498db;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .job-title {
+            font-weight: bold;
+            font-size: 13px;
+            color: #2c3e50;
+        }
+
+        .company {
+            font-weight: 600;
+            color: #34495e;
+        }
+
+        .date-location {
+            font-style: italic;
+            color: #7f8c8d;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+
+        p,
+        li {
+            font-size: 11px;
+            margin-bottom: 3px;
+        }
+
+        ul {
+            margin-left: 16px;
+            margin-bottom: 5px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            column-gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .skill-category {
+            margin-bottom: 4px;
+        }
+
+        .skill-category strong {
+            display: block;
+            color: #2c3e50;
+            font-size: 11px;
+            margin-bottom: 1px;
+            line-height: 1.1;
+        }
+
+        .skill-category span {
+            font-size: 11px;
+            color: #555;
+            line-height: 1.25;
+            display: block;
+        }
+
+        .skill-category span strong {
+            margin-bottom: 0;
+            line-height: 1.25;
+        }
+
+        .summary {
+            text-align: justify;
+            margin-bottom: 6px;
+            font-size: 11px;
+            line-height: 1.35;
+        }
+
+        .achievement {
+            margin-bottom: 2px;
+        }
+
+        .achievement strong {
+            color: #2c3e50;
+        }
+
+        .section-content {
+            margin-bottom: 12px;
+        }
+
+        .education-item {
+            margin-bottom: 4px;
+            font-size: 11px;
+        }
+
+        .education-item strong {
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        @page {
+            margin: 0.4in 0.5in;
+            size: letter;
+        }
+
+        @media print {
+            h2 {
+                page-break-after: avoid;
+            }
+
+            .section-content {
+                page-break-inside: avoid;
+            }
+
+            .vitality-section {
+                page-break-inside: avoid;
+                page-break-after: avoid;
+            }
+
+            .discovery-section {
+                page-break-before: auto;
+            }
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 8px;
+            font-size: 11px;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>BRADLEY LUND</h1>
+        <div class="subtitle">Business Analyst | Business Intelligence | Process Automation</div>
+        <div class="contact-info">
+            Cleveland, Ohio, USA |
+            bradjlund@gmail.com |
+            +1 (440) 640-8705 |
+            <a href="https://www.linkedin.com/in/bradley-lund">LinkedIn</a> |
+            <a href="https://bradleylund.github.io/">Website</a>
+        </div>
+    </header>
+
+    <section>
+        <h2>Professional Summary</h2>
+        <p class="summary">
+            Technical Business Analyst with 5+ years of experience driving business process automation, system
+            migrations, and data-driven decision-making in the health insurance industry. Proven expertise in SQL, Power
+            BI and process optimization,
+            delivering solutions that enhance operational efficiency and financial accuracy. Strong background in
+            Actuarial Science combined with technical development skills enables unique problem-solving approaches.
+            Experienced in stakeholder engagement, requirements gathering, and translating complex business needs into
+            actionable technical solutions.
+        </p>
+    </section>
+
+    <section>
+        <h2>Core Competencies</h2>
+        <div class="skills-grid">
+            <div>
+                <div class="skill-category">
+                    <strong>Business Analysis & Process Improvement</strong>
+                    <span>
+                        Requirements Gathering & Documentation • Stakeholder Engagement & Management • Business
+                        Process Automation • System Migration & Implementation • UAT & Quality Assurance • MS Visio •
+                        Lucidchart </span>
+                </div>
+                <div class="skill-category">
+                    <strong>Project Management & Collaboration</strong>
+                    <span>Agile Methodology • Kanban Boards • Jira Project Management • Confluence Documentation •
+                        Sprint Planning & Retrospectives</span>
+                </div>
+                <div class="skill-category">
+                    <strong>AI & Emerging Technologies</strong>
+                    <span>Model Context Protocol (MCP) Server Development • AI-Assisted Process Optimization • Automated
+                        Ticketing System Integration</span>
+                </div>
+                <div class="skill-category">
+                    <strong>Languages</strong>
+                    <span><b>English:</b> Native • <b>Spanish:</b> Intermediate (Limited Working
+                        Proficiency)</span>
+                </div>
+            </div>
+            <div>
+                <div class="skill-category">
+                    <strong>Technical Skills</strong>
+                    <span><strong>Data & Analytics:</strong> SQL, Power BI, Excel, SSRS<br>
+                        <strong>Automation:</strong> Power Automate, Python<br>
+                        <strong>Development:</strong> SQL (Stored Procedures), ASP.NET, React, JavaScript, HTML/CSS<br>
+                        <strong>Cloud & Infrastructure:</strong> AWS (EC2, S3, RDS), API Integration<br>
+                        <strong>Databases:</strong> SQL Server Management Studio, MongoDB<br>
+                        <strong>Tools:</strong> Git, SSO Implementation</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Professional Experience</h2>
+
+
+        <div class="section-content">
+            <div class="job-title">BA Manager | <span class="company">Signature Business Solutions</span></div>
+            <div class="date-location">March 2025 - Present</div>
+            <p>Managed three Business Analysts and lead operations for UK-based client, overseeing project
+                delivery and strategic initiatives using Agile methodologies and Jira project tracking.</p>
+        </div>
+        <!-- <br> -->
+
+        <div class="section-content">
+            <div class="job-title">Senior Business Analyst | <span class="company">Signature Business Solutions</span>
+            </div>
+            <div class="date-location">September 2020 - Present</div>
+
+            <div class="vitality-section" style="margin-top: 8px;"></div>
+            <p style="margin-bottom: 4px;"><strong>Contractor to Vitality UK (February 2022 - Present) | Based in
+                    Bournemouth, UK</strong></p>
+            <p style="margin-bottom: 3px;">Drive automation initiatives and system optimization for Vitality, a
+                leading
+                health and life insurance provider.</p>
+
+            <ul>
+                <li class="achievement"><strong>Business Analysis: </strong>Liaised with and managed multiple
+                    stakeholders around
+                    Vitality's business. Extracting and documenting technical requirements, hosting and running regular
+                    stakeholder catchups.
+                    Wrote and maintained design documents for processes throughout the company using confluence as our
+                    documentation tool.
+                </li>
+                <li class="achievement"><strong>Software Implementation: </strong>Implemented automatic reconciliation
+                    software at Vitality UK. Liased
+                    Vitality's internal technology teams in order to successfully deploy and integrate the software with
+                    Vitality's data warehouses and servers.</li>
+                <li class="achievement"><strong>Database Administration: </strong>Set up automated data pipelines and
+                    monitoring reports using SQL Server Stored Procedures and Power BI. Monitored, maintained, and
+                    improved stored procedure performance through query statistics analysis and index management.</li>
+                <li class="achievement"><strong>Business As Usual: </strong>
+                    Utilized SQL Server Management Studio daily to write and maintain SQL code to resolve and manage
+                    business issues effectively and efficiently.
+                </li>
+
+                <li class="achievement"><strong>Automated Reconciliations:</strong> SQL-Driven Automated
+                    Reconciliations: Designed and implemented large-scale automated bank reconciliation processes
+                    using
+                    advanced SQL queries and stored procedures, processing over a million healthcare insurance
+                    transactions monthly with 99.8% accuracy</li>
+                <li class="achievement"><strong>System Migrations:</strong> Led financial system migration projects,
+                    ensuring smooth transitions through SQL, Power BI monitoring dashboards and Power Automate
+                    alerts
+                </li>
+                <li class="achievement"><strong>SSRS:</strong> Built,debugged, maintained, deployed and automated
+                    hundreds of SQL Reports through SSRS.
+                    Writing engaging reports to the stakeholder's needs
+                </li>
+
+                <li class="achievement"><strong>Power BI Integration:</strong> Built interactive, user-friendly
+                    dashboards integrated
+                    with Power Automate for real-time alerts, changing our bug fixing from reactive to proactive
+                </li>
+                <li class="achievement"><strong>MS Visio & Lucidchart Process Documentation:</strong> Created
+                    comprehensive process flow diagrams using MS Visio & Lucidchart for financial reporting on
+                    claims
+                    and premium data</li>
+
+                <li class="achievement"><strong>FinCrime Vetting Application:</strong> Scoped, designed, and built
+                    an
+                    ASP.NET
+                    Razor Pages web application with SSO and SQL Server as a database for the Financial Crime team
+                    to
+                    conduct financial checks during
+                    agency onboarding, streamlining the vetting process. Built and drove the web applications
+                    development in accordance with the
+                    software development lifecycle</li>
+                <li class="achievement"><strong>API Development:</strong> Developed custom API integrations to
+                    connect
+                    disparate systems, improving data flow</li>
+                <li class="achievement"><strong>MCP Server Implementation:</strong> Built a Model Context Protocol
+                    server to query Vitality's ticketing system, enabling automated summaries of completed work and
+                    identification of recurring issues requiring permanent fixes</li>
+            </ul>
+        </div>
+        <!-- <br>
+        <br>
+        <br>
+        <br>
+        <br> -->
+        <div class="discovery-section">
+            <p style="margin-top: 6px; margin-bottom: 4px;"><strong>Contractor to Discovery Limited, South Africa
+                    (September 2020 - January 2022) | Based in Johannesburg</strong></p>
+            <p style="margin-bottom: 3px;">Provided business analysis and automation solutions for multiple clients
+                including VatGlobal and Discovery Invest. Automated bank reconciliation processes for Discovery's
+                financial reporting and accounting team using iCompare, SQL Server,
+                and SSRS. Developed efficient stored procedures to handle complex business logic</p>
+
+            <!-- <ul style="margin-top: 3px; margin-bottom: 3px;">
+                    <li>Automated bank reconciliation processes for VatGlobal's accounting team using iCompare, SQL Server,
+                        and SSRS</li>
+                    <li>Developed efficient stored procedures to handle complex business logic</li>
+                    </li>
+                </ul> -->
+
+            <p style="margin-top: 4px;"><strong>Core Responsibilities:</strong></p>
+            <ul style="margin-top: 2px;">
+                <li>Analyze business processes using SQL Server, Excel, and Power BI</li>
+                <!-- <li>Design and implement technical solutions for complex business requirements</li> -->
+                <li>Create interactive dashboards and reports using Power BI and SSRS</li>
+                <li>Write and optimize stored procedures for data manipulation and reporting</li>
+                <!-- <li>Maintain and enhance BAU reconciliation procedures</li> -->
+                <li>Document technical specifications and process workflows</li>
+                <!-- <li>Engage with stakeholders to gather requirements and provide updates</li> -->
+            </ul>
+        </div>
+        </div>
+        <br>
+        <div class="section-content">
+            <div class="job-title">English Teaching Assistant | <span class="company">Comunidad de Madrid, Spain</span>
+            </div>
+            <div class="date-location">October 2018 - July 2020</div>
+            <p>Taught English at primary and high schools in Madrid, developing strong communication and cross-cultural
+                collaboration skills.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Education</h2>
+        <div class="education-item">
+            <strong>Bachelor of Science in Actuarial and Financial Mathematics</strong><br>
+            University of Pretoria, South Africa | 2012 - 2017
+        </div>
+        <div class="education-item">
+            <strong>Full Stack Web Development Bootcamp</strong><br>
+            HyperionDev | March 2021 - September 2021
+        </div>
+    </section>
+
+    <section>
+        <h2>Volunteer Experience</h2>
+        <div class="education-item">
+            <strong>Mental Health Support Volunteer</strong> | Reading Music Festival<br>
+            Volunteered in the mental health tent, providing support and assistance to festival goers in need
+        </div>
+        <div class="education-item">
+            <strong>Event Organizer & Planner</strong> | Orienteering Clubs<br>
+            Organized and planned orienteering events, including course design, logistics coordination, and participant
+            management
+        </div>
+    </section>
+</body>
+
+</html>

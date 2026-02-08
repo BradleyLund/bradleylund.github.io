@@ -1,1 +1,140 @@
-resume here
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume — Bradley Lund</title>
+    <meta
+      name="description"
+      content="Resume of Bradley Lund — Business Analyst specialising in SQL and Power BI, with a passion for web and mobile development."
+    />
+    <script
+      src="https://kit.fontawesome.com/7e4cf377d7.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      (function () {
+        var theme = localStorage.getItem("theme");
+        if (theme) {
+          document.documentElement.setAttribute("data-theme", theme);
+        }
+      })();
+    </script>
+    <style>
+      .resume-iframe {
+        width: 100%;
+        height: 80vh;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        background: #fff;
+      }
+      .resume-actions {
+        margin-bottom: 1.5rem;
+        display: flex;
+        gap: 1rem;
+      }
+      .resume-actions a {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--text-muted);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        transition: color var(--transition);
+      }
+      .resume-actions a:hover {
+        color: var(--text);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Gradient background -->
+    <div class="gradients-bg">
+      <div class="gradient green"></div>
+      <div class="gradient pink"></div>
+      <div class="gradient blue"></div>
+      <div class="gradient frost"></div>
+      <div class="gradient celestial"></div>
+      <div class="gradient purple current"></div>
+    </div>
+
+    <!-- Theme Picker Modal -->
+    <div class="theme-picker-overlay" id="themePicker">
+      <div class="theme-picker">
+        <h2>Choose Your Style</h2>
+        <p>Pick a theme that suits your taste. You can change it anytime.</p>
+        <div class="theme-options">
+          <div class="theme-option" data-theme="minimal">
+            <div class="theme-option-preview"></div>
+            <h3>Clean & Minimal</h3>
+            <p>Light, airy, lots of whitespace</p>
+          </div>
+          <div class="theme-option" data-theme="gradients">
+            <div class="theme-option-preview"></div>
+            <h3>Gradients</h3>
+            <p>Colorful cycling backgrounds</p>
+          </div>
+          <div class="theme-option" data-theme="editorial">
+            <div class="theme-option-preview"></div>
+            <h3>Dark Editorial</h3>
+            <p>Elegant dark with gold accents</p>
+          </div>
+          <div class="theme-option" data-theme="bold">
+            <div class="theme-option-preview"></div>
+            <h3>Bold & Expressive</h3>
+            <p>Vibrant gradients, strong type</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav>
+      <div class="nav-inner">
+        <a href="./index.html" class="nav-name">Bradley Lund</a>
+        <button class="nav-toggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav-links">
+          <a href="./about.html">About</a>
+          <a href="./projects.html">Projects</a>
+          <a href="./resume.html">Resume</a>
+          <button class="theme-toggle" id="openThemePicker">
+            <i class="fas fa-palette"></i> Theme
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <main class="page-content">
+      <div class="container">
+        <header class="page-header reveal">
+          <h1>Resume</h1>
+          <div class="rule"></div>
+        </header>
+
+        <div class="resume-actions reveal">
+          <a href="./resume-content.html" target="_blank">
+            <i class="fas fa-external-link-alt"></i> Open Full Page
+          </a>
+          <a href="#" onclick="document.querySelector('.resume-iframe').contentWindow.print(); return false;">
+            <i class="fas fa-download"></i> Save as PDF
+          </a>
+        </div>
+
+        <div class="reveal">
+          <iframe
+            class="resume-iframe"
+            src="./resume-content.html"
+            title="Bradley Lund Resume"
+          ></iframe>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
