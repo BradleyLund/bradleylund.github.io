@@ -1,94 +1,112 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bradley Lund</title>
-    <meta name="description" content="Bradley Lund — Business Analyst & Developer. Data-driven insights by day, building apps by night.">
-    <script src="https://kit.fontawesome.com/7e4cf377d7.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
+    <meta
+      name="description"
+      content="Bradley Lund — Analyst & Developer. Data-driven insights by day, building apps by night."
+    />
+    <script
+      src="https://kit.fontawesome.com/7e4cf377d7.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
     <script>
-        // Apply saved theme immediately to prevent flash
-        (function() {
-            var theme = localStorage.getItem('theme');
-            if (theme) {
-                document.documentElement.setAttribute('data-theme', theme);
-            }
-        })();
+      // Apply saved theme immediately to prevent flash
+      (function () {
+        var theme = localStorage.getItem("theme");
+        if (theme) {
+          document.documentElement.setAttribute("data-theme", theme);
+        }
+      })();
     </script>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <!-- Gradient background (visible only in gradients theme) -->
     <div class="gradients-bg">
-        <div class="gradient green"></div>
-        <div class="gradient pink"></div>
-        <div class="gradient blue"></div>
-        <div class="gradient frost"></div>
-        <div class="gradient celestial"></div>
-        <div class="gradient purple current"></div>
+      <div class="gradient green"></div>
+      <div class="gradient pink"></div>
+      <div class="gradient blue"></div>
+      <div class="gradient frost"></div>
+      <div class="gradient celestial"></div>
+      <div class="gradient purple current"></div>
     </div>
 
     <!-- Theme Picker Modal -->
     <div class="theme-picker-overlay" id="themePicker">
-        <div class="theme-picker">
-            <h2>Choose Your Style</h2>
-            <p>Pick a theme that suits your taste. You can change it anytime.</p>
-            <div class="theme-options">
-                <div class="theme-option" data-theme="minimal">
-                    <div class="theme-option-preview"></div>
-                    <h3>Clean & Minimal</h3>
-                    <p>Light, airy, lots of whitespace</p>
-                </div>
-                <div class="theme-option" data-theme="gradients">
-                    <div class="theme-option-preview"></div>
-                    <h3>Gradients</h3>
-                    <p>Colorful cycling backgrounds</p>
-                </div>
-                <div class="theme-option" data-theme="editorial">
-                    <div class="theme-option-preview"></div>
-                    <h3>Dark Editorial</h3>
-                    <p>Elegant dark with gold accents</p>
-                </div>
-                <div class="theme-option" data-theme="bold">
-                    <div class="theme-option-preview"></div>
-                    <h3>Bold & Expressive</h3>
-                    <p>Vibrant gradients, strong type</p>
-                </div>
-            </div>
+      <div class="theme-picker">
+        <h2>Choose Your Style</h2>
+        <p>Pick a theme that suits your taste. You can change it anytime.</p>
+        <div class="theme-options">
+          <div class="theme-option" data-theme="minimal">
+            <div class="theme-option-preview"></div>
+            <h3>Clean & Minimal</h3>
+            <p>Light, airy, lots of whitespace</p>
+          </div>
+          <div class="theme-option" data-theme="gradients">
+            <div class="theme-option-preview"></div>
+            <h3>Gradients</h3>
+            <p>Colorful cycling backgrounds</p>
+          </div>
+          <div class="theme-option" data-theme="editorial">
+            <div class="theme-option-preview"></div>
+            <h3>Dark Editorial</h3>
+            <p>Elegant dark with gold accents</p>
+          </div>
+          <div class="theme-option" data-theme="bold">
+            <div class="theme-option-preview"></div>
+            <h3>Bold & Expressive</h3>
+            <p>Vibrant gradients, strong type</p>
+          </div>
         </div>
+      </div>
     </div>
 
     <section class="hero">
-        <h1 class="hero-name fade-up" style="--delay: 0.15s">Bradley Lund</h1>
-        <p class="hero-title fade-up" style="--delay: 0.35s">Business Analyst & Developer</p>
+      <h1 class="hero-name fade-up" style="--delay: 0.15s">Bradley Lund</h1>
+      <p class="hero-title fade-up" style="--delay: 0.35s">
+        Business Analyst & Developer
+      </p>
 
-        <div class="hero-rule fade-up" style="--delay: 0.5s"></div>
+      <div class="hero-rule fade-up" style="--delay: 0.5s"></div>
 
-        <div class="hero-nav fade-up" style="--delay: 0.65s">
-            <a href="./about.html">About</a>
-            <a href="./projects.html">Projects</a>
-            <a href="./resume.html">Resume</a>
-        </div>
+      <div class="hero-nav fade-up" style="--delay: 0.65s">
+        <a href="./about.html">About</a>
+        <a href="./projects.html">Projects</a>
+        <a href="./resume.html">Resume</a>
+      </div>
 
-        <div class="hero-social fade-up" style="--delay: 0.85s">
-            <a href="https://github.com/BradleyLund" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                <i class="fab fa-github"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/bradley-lund" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <i class="fab fa-linkedin-in"></i>
-            </a>
-        </div>
+      <div class="hero-social fade-up" style="--delay: 0.85s">
+        <a
+          href="https://github.com/BradleyLund"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+        >
+          <i class="fab fa-github"></i>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/bradley-lund"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+        >
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
 
-        <button class="theme-toggle fade-up" style="--delay: 1s" id="openThemePicker">
-            <i class="fas fa-palette"></i> Theme
-        </button>
+      <button
+        class="theme-toggle fade-up"
+        style="--delay: 1s"
+        id="openThemePicker"
+      >
+        <i class="fas fa-palette"></i> Theme
+      </button>
     </section>
 
     <script src="script.js"></script>
-
-</body>
-
+  </body>
 </html>
