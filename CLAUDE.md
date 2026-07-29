@@ -16,28 +16,52 @@ Personal portfolio website for Bradley Lund, deployed as a static GitHub Pages s
 
 ### Page Structure
 
-- `index.html` — Landing page with animated gradient background, name/title, nav links, and social icons
-- `projects.html` — Project showcase cards (PassportPals, Virtual Ukulele, Emoji Ecommerce)
-- `fight.html` — Fun countdown page (Bradley vs Damian arm wrestling)
-- `whoami.html` — About page (shares gradient system with index)
-- `whiteboard.html` — Minimal HTML5 canvas (incomplete)
-- `resume.html` — Placeholder resume page
+Live, linked-from-nav pages (all share `style.css` + `script.js`):
 
-### Gradient Transition System
+- `index.html` — Landing/hero page: name, title, hero-nav (About/Projects/Resume), GitHub/LinkedIn icons, theme toggle
+- `about.html` — Bio + skills grid
+- `projects.html` — Project showcase cards (PassportPals, PassportPals v1, DoublesChess, Political Compass Game, Virtual Ukulele, African Countries, Emoji Ecommerce)
+- `resume.html` — Embeds `resume-content.html` in an iframe (with an "Open Full Page" link and a "Save as PDF" button that calls `.print()` on the iframe's `contentWindow`)
+- `resume-content.html` — The actual resume content, meant to be viewed standalone or inside the `resume.html` iframe
 
-The core visual feature. Six colored gradient `<div>`s inside `.gradients` are cycled via jQuery Transit opacity fades in `script.js` on a 7.5-second loop. The `#everything` container (z-index: 1000) floats above the gradients. This system is shared between `index.html` and `whoami.html`.
+Present in the repo but **not linked from any current page's nav** — confirm intent before assuming they're part of the live site:
+
+- `links.html` — A full standalone page (own nav, own content) with no inbound link from any other page. Possibly meant to be shared as a direct URL (e.g. a social-bio link) rather than reached via site nav — not confirmed either way.
+- `whoami.html`, `fight.html`, `whiteboard.html`, `jquery.transit.min.js` — Leftovers from an earlier design (see below). `whoami.html` still uses the old `.gradients`/jQuery Transit system, not the current `.gradients-bg` one.
+
+### Theme System
+
+The core visual feature (this replaced an earlier single-gradient design — `whoami.html` is the last surviving page on the old system). Four themes, chosen via a modal (`.theme-picker-overlay`) and persisted in `localStorage` under the `theme` key, applied as `data-theme` on `<html>`:
+
+- `minimal` — Clean/light (the default when no theme is saved)
+- `gradients` — Colorful cycling backgrounds (see below)
+- `editorial` — Dark with gold accents
+- `bold` — Vibrant gradients, strong type
+
+`script.js` handles: showing the picker on first visit (no saved theme), opening it via any `#openThemePicker` button, closing on overlay click, applying/persisting a choice, and highlighting the current selection.
+
+An inline script in each page's `<head>` applies the saved theme *before* the page renders (prevents a flash of the default theme).
+
+### Gradient Cycling
+
+Inside `.gradients-bg`, six `.gradient` divs (green/pink/blue/frost/celestial/purple) are cycled by `script.js`: the div marked `current` fades in over 7.5s, then gets moved to the end of the stack and the new first div becomes `current` with a fresh transition. Only visible when the `gradients` theme is active. Every live page's markup must have exactly one `.gradient` div marked `current` in its initial HTML, or the cycle never starts (`cycleGradients()` bails out silently if none is found).
+
+### Other script.js behavior
+
+- Active nav-link highlighting (matches `window.location.pathname` against each link's `href`)
+- Mobile nav toggle (hamburger button, `.nav-links.open`)
+- Scroll-reveal via `IntersectionObserver` on `.reveal` elements (staggered by DOM order), with a fallback that just shows everything if `IntersectionObserver` isn't available
 
 ### CSS Organization
 
-Each page has its own stylesheet (`style.css`, `projectStyle.css`, `fightStyle.css`). Gradients in `style.css` use full vendor prefix sets (`-webkit-`, `-moz-`, `-o-`, `-ms-`). Layout uses viewport-relative units (`vw`, `vh`) for responsive scaling.
+`style.css` is the shared stylesheet for the current design (themes, gradients, nav, reveal animations). `projectStyle.css` and `fightStyle.css` are leftovers tied to the old design / orphaned pages, not used by the current live pages.
 
 ### Dependencies (all via CDN or local)
 
-- jQuery 3.5.1 (CDN)
-- jQuery Transit (`jquery.transit.min.js`, local) — CSS3 transition animations
-- Font Awesome (CDN kit)
-- Google Fonts: Alata
+- Font Awesome (CDN kit) — icons
+- Google Fonts (CDN): Inter, Sora, Instrument Serif, Outfit, Space Grotesk — different themes use different font pairings via CSS custom properties (`--font`, `--font-heading`)
+- jQuery 3.5.1 + jQuery Transit (`jquery.transit.min.js`, local) — only used by the orphaned old-design pages (`whoami.html`), not the current live pages
 
 ### Static Assets
 
-`src/` contains the CV PDF and images. The `.gitignore` excludes `whitb/` and `color-transition/` directories.
+`src/` contains headshot/CV images used by the live pages. The `.gitignore` excludes `whitb/` and `color-transition/` directories.
