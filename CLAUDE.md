@@ -27,11 +27,12 @@ Live, linked-from-nav pages (all share `style.css` + `script.js`):
 Present in the repo but **not linked from any current page's nav** — confirm intent before assuming they're part of the live site:
 
 - `links.html` — A full standalone page (own nav, own content) with no inbound link from any other page. Possibly meant to be shared as a direct URL (e.g. a social-bio link) rather than reached via site nav — not confirmed either way.
-- `whoami.html`, `fight.html`, `whiteboard.html`, `jquery.transit.min.js` — Leftovers from an earlier design (see below). `whoami.html` still uses the old `.gradients`/jQuery Transit system, not the current `.gradients-bg` one.
+
+`whoami.html`, `fight.html`, `whiteboard.html`, `jquery.transit.min.js`, `fightStyle.css`, and `projectStyle.css` — pre-theme-picker leftovers (an old single-gradient/jQuery-Transit design, a 2021 joke countdown page, an empty canvas stub) — were removed 2026-08-05 after confirming via recursive grep that nothing else referenced them. `src/CVpic.jpg` and `src/damoPic.jpg` (only ever used by the now-removed `fight.html`) are still present and now orphaned — deliberately left for a separate decision since they weren't named in the backlog item that prompted the rest of this cleanup (see TASKS.md).
 
 ### Theme System
 
-The core visual feature (this replaced an earlier single-gradient design — `whoami.html` is the last surviving page on the old system). Four themes, chosen via a modal (`.theme-picker-overlay`) and persisted in `localStorage` under the `theme` key, applied as `data-theme` on `<html>`:
+The core visual feature (replaced an earlier single-gradient design — see the removed-files note above). Four themes, chosen via a modal (`.theme-picker-overlay`) and persisted in `localStorage` under the `theme` key, applied as `data-theme` on `<html>`:
 
 - `minimal` — Clean/light (the default when no theme is saved)
 - `gradients` — Colorful cycling backgrounds (see below)
@@ -54,14 +55,14 @@ Inside `.gradients-bg`, six `.gradient` divs (green/pink/blue/frost/celestial/pu
 
 ### CSS Organization
 
-`style.css` is the shared stylesheet for the current design (themes, gradients, nav, reveal animations). `projectStyle.css` and `fightStyle.css` are leftovers tied to the old design / orphaned pages, not used by the current live pages.
+`style.css` is the shared stylesheet for the current design (themes, gradients, nav, reveal animations) — the only stylesheet in the repo now that the old-design leftovers have been removed (see above).
 
 ### Dependencies (all via CDN or local)
 
 - Font Awesome (CDN kit) — icons
 - Google Fonts (CDN): Inter, Sora, Instrument Serif, Outfit, Space Grotesk — different themes use different font pairings via CSS custom properties (`--font`, `--font-heading`)
-- jQuery 3.5.1 + jQuery Transit (`jquery.transit.min.js`, local) — only used by the orphaned old-design pages (`whoami.html`), not the current live pages
+- No jQuery/jQuery Transit anymore — that was only used by the now-removed `whoami.html`
 
 ### Static Assets
 
-`src/` contains headshot/CV images used by the live pages. The `.gitignore` excludes `whitb/` and `color-transition/` directories.
+`src/` contains headshot/CV images. `BradHeadshot.png` is used by the live pages; `CVpic.jpg`/`damoPic.jpg` are orphaned (see the removed-files note above). The `.gitignore` excludes `whitb/` and `color-transition/` directories.
