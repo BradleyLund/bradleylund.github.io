@@ -18,15 +18,12 @@ Personal portfolio website for Bradley Lund, deployed as a static GitHub Pages s
 
 Live, linked-from-nav pages (all share `style.css` + `script.js`):
 
-- `index.html` — Landing/hero page: name, title, hero-nav (About/Projects/Resume), GitHub/LinkedIn icons, theme toggle
+- `index.html` — Landing/hero page: name, title, hero-nav (About/Projects/Resume/Links), GitHub/LinkedIn icons, theme toggle. Note this page uses the `.hero-nav` pill row, *not* the `.nav-links`/`.nav-toggle` header the other pages share — so it has no hamburger; the pills just wrap on narrow screens.
 - `about.html` — Bio + skills grid
 - `projects.html` — Project showcase cards (ChessLoops, PassportPals, DoublesChess, Political Compass Game, PassportPals v1, Virtual Ukulele, African Countries, Emoji Ecommerce)
 - `resume.html` — Embeds `resume-content.html` in an iframe (with an "Open Full Page" link and a "Save as PDF" button that calls `.print()` on the iframe's `contentWindow`)
-- `resume-content.html` — The actual resume content, meant to be viewed standalone or inside the `resume.html` iframe
-
-Present in the repo but **not linked from any current page's nav** — confirm intent before assuming they're part of the live site:
-
-- `links.html` — A full standalone page (own nav, own content) with no inbound link from any other page. Possibly meant to be shared as a direct URL (e.g. a social-bio link) rather than reached via site nav — not confirmed either way.
+- `resume-content.html` — The actual resume content, meant to be viewed standalone or inside the `resume.html` iframe. Deliberately the one page with no theme-restore script, no `script.js` and no theme picker — it is a document, not a themed site page.
+- `links.html` — Curated links. Reachable from every page's nav (added 2026-08-01; it had previously sat in the repo unlinked).
 
 `whoami.html`, `fight.html`, `whiteboard.html`, `jquery.transit.min.js`, `fightStyle.css`, and `projectStyle.css` — pre-theme-picker leftovers (an old single-gradient/jQuery-Transit design, a 2021 joke countdown page, an empty canvas stub) — were removed 2026-08-05 after confirming via recursive grep that nothing else referenced them. `src/CVpic.jpg` and `src/damoPic.jpg` (only ever used by the now-removed `fight.html`) were removed 2026-08-20 for the same reason, once re-confirmed nothing else referenced them either.
 
@@ -65,4 +62,4 @@ Inside `.gradients-bg`, six `.gradient` divs (green/pink/blue/frost/celestial/pu
 
 ### Static Assets
 
-`src/` contains headshot/CV images. `BradHeadshot.png` is used by the live pages. The `.gitignore` excludes `whitb/` and `color-transition/` directories.
+`src/` contains a single image, `BradHeadshot.png`, used by the live pages. (The CV images that used to live here went with `fight.html` — see the removed-files note above.) The `.gitignore` excludes `whitb/` and `color-transition/` directories.

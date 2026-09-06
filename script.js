@@ -148,13 +148,21 @@ document.addEventListener('DOMContentLoaded', function () {
   var navLinksContainer = document.querySelector('.nav-links');
 
   if (toggle && navLinksContainer) {
+    // The button already had an aria-label, but nothing told assistive tech
+    // whether the menu was currently open or closed — it announced the same
+    // thing in both states.
+    function setNavOpen(open) {
+      navLinksContainer.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
     toggle.addEventListener('click', function () {
-      navLinksContainer.classList.toggle('open');
+      setNavOpen(!navLinksContainer.classList.contains('open'));
     });
 
     navLinksContainer.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
-        navLinksContainer.classList.remove('open');
+        setNavOpen(false);
       });
     });
   }
