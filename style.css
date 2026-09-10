@@ -908,6 +908,11 @@ nav {
     margin-bottom: 1.5rem;
 }
 
+/* Cards with no links row shouldn't carry the tags' trailing margin */
+.project-tags:last-child {
+    margin-bottom: 0;
+}
+
 .project-tags span {
     font-size: 0.7rem;
     font-weight: 500;
