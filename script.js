@@ -8,31 +8,55 @@ document.addEventListener('DOMContentLoaded', function () {
   var themeOptions = document.querySelectorAll('.theme-option');
   var openButtons = document.querySelectorAll('#openThemePicker');
 
+  // Lock page scrolling while the picker is open, so on a phone a swipe
+  // scrolls the modal instead of the page behind it
+  function openPicker() {
+    if (!themePicker) return;
+    themePicker.classList.add('active');
+    document.body.classList.add('theme-picker-open');
+  }
+
+  function closePicker() {
+    if (!themePicker) return;
+    themePicker.classList.remove('active');
+    document.body.classList.remove('theme-picker-open');
+  }
+
   // Show theme picker if no theme is saved (first visit)
   if (!localStorage.getItem('theme') && themePicker) {
-    setTimeout(function() {
-      themePicker.classList.add('active');
-    }, 500);
+    setTimeout(openPicker, 500);
   }
 
   // Open theme picker on button click
   openButtons.forEach(function(btn) {
     btn.addEventListener('click', function() {
       if (themePicker) {
-        themePicker.classList.add('active');
+        openPicker();
         updateSelectedOption();
       }
     });
   });
 
-  // Close theme picker when clicking overlay (not the modal itself)
+  // Close theme picker when clicking overlay (not the modal itself),
+  // the close button, or pressing Escape
   if (themePicker) {
     themePicker.addEventListener('click', function(e) {
       if (e.target === themePicker) {
-        themePicker.classList.remove('active');
+        closePicker();
       }
     });
   }
+
+  var closeButton = document.getElementById('closeThemePicker');
+  if (closeButton) {
+    closeButton.addEventListener('click', closePicker);
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && themePicker && themePicker.classList.contains('active')) {
+      closePicker();
+    }
+  });
 
   // Update selected state based on current theme
   function updateSelectedOption() {
@@ -62,11 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
       this.classList.add('selected');
 
       // Close picker after short delay
-      setTimeout(function() {
-        if (themePicker) {
-          themePicker.classList.remove('active');
-        }
-      }, 200);
+      setTimeout(closePicker, 200);
     });
   });
 

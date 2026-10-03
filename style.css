@@ -368,9 +368,19 @@ nav {
     align-items: center;
     justify-content: center;
     padding: 2rem;
+    /* Scroll the modal if it's taller than the screen (short phones,
+       landscape) — paired with margin: auto on .theme-picker so its top
+       can't be pushed off-screen by flex centering */
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+body.theme-picker-open {
+    overflow: hidden;
 }
 
 .theme-picker-overlay.active {
@@ -384,6 +394,8 @@ nav {
     padding: 2.5rem;
     max-width: 520px;
     width: 100%;
+    margin: auto;
+    position: relative;
     text-align: center;
     transform: scale(0.95);
     transition: transform 0.3s ease;
@@ -391,6 +403,31 @@ nav {
 
 .theme-picker-overlay.active .theme-picker {
     transform: scale(1);
+}
+
+.theme-picker-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    border-radius: 50%;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.75rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.theme-picker-close:hover,
+.theme-picker-close:focus-visible {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
 }
 
 .theme-picker h2 {
@@ -422,11 +459,16 @@ nav {
     cursor: pointer;
     transition: all 0.2s ease;
     text-align: left;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.theme-option:hover {
-    border-color: #555;
-    transform: translateY(-2px);
+/* Hover lift only on devices that really hover — on touch screens it
+   sticks after a tap */
+@media (hover: hover) {
+    .theme-option:hover {
+        border-color: #555;
+        transform: translateY(-2px);
+    }
 }
 
 .theme-option.selected {
@@ -1201,18 +1243,138 @@ nav {
         margin-bottom: 3rem;
     }
 
-    /* Theme picker */
-    .theme-options {
-        grid-template-columns: 1fr;
+    /* Theme picker — compact rows (thumbnail left, text right) so all
+       four options fit on a phone screen without scrolling */
+    .theme-picker-overlay {
+        padding: 1rem;
     }
 
     .theme-picker {
-        padding: 1.5rem;
+        padding: 1.75rem 1.25rem 1.25rem;
+        border-radius: 16px;
+    }
+
+    .theme-picker h2 {
+        font-size: 1.3rem;
+        padding: 0 2.5rem;
+    }
+
+    .theme-picker > p {
+        margin-bottom: 1.25rem;
+    }
+
+    .theme-options {
+        grid-template-columns: 1fr;
+        gap: 0.625rem;
+    }
+
+    .theme-option {
+        display: grid;
+        grid-template-columns: 64px 1fr;
+        grid-template-rows: auto auto;
+        column-gap: 0.875rem;
+        align-items: center;
+        padding: 0.75rem;
+        min-height: 64px;
+    }
+
+    .theme-option-preview {
+        grid-row: 1 / span 2;
+        height: 44px;
+        margin-bottom: 0;
+    }
+
+    .theme-option h3 {
+        align-self: end;
+        margin-bottom: 0.125rem;
+    }
+
+    .theme-option p {
+        align-self: start;
+    }
+
+    .theme-option:active {
+        transform: scale(0.98);
     }
 
     /* Bold theme glow */
     [data-theme="bold"] .hero::before {
         width: 350px;
         height: 350px;
+    }
+}
+
+/* Very narrow phones (iPhone SE 1st gen etc.) */
+@media (max-width: 380px) {
+    .theme-picker-overlay {
+        padding: 0.75rem;
+    }
+
+    .theme-picker {
+        padding: 1.5rem 1rem 1rem;
+    }
+
+    .theme-picker h2 {
+        font-size: 1.2rem;
+        padding: 0 2rem;
+    }
+
+    .theme-picker > p {
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+    }
+
+    .theme-option {
+        grid-template-columns: 52px 1fr;
+        column-gap: 0.75rem;
+        padding: 0.625rem;
+    }
+
+    .theme-option-preview {
+        height: 38px;
+    }
+}
+
+/* Landscape phones: a 2x2 grid of the compact rows uses the width better
+   than four stacked rows */
+@media (max-width: 950px) and (max-height: 500px) and (orientation: landscape) {
+    .theme-picker-overlay {
+        padding: 0.75rem;
+    }
+
+    .theme-picker {
+        max-width: 640px;
+        padding: 1.25rem;
+    }
+
+    .theme-picker > p {
+        margin-bottom: 1rem;
+    }
+
+    .theme-options {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.625rem;
+    }
+
+    .theme-option {
+        display: grid;
+        grid-template-columns: 64px 1fr;
+        column-gap: 0.75rem;
+        align-items: center;
+        padding: 0.625rem;
+    }
+
+    .theme-option-preview {
+        grid-row: 1 / span 2;
+        height: 40px;
+        margin-bottom: 0;
+    }
+
+    .theme-option h3 {
+        align-self: end;
+    }
+
+    .theme-option p {
+        align-self: start;
     }
 }
