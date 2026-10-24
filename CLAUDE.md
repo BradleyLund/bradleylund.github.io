@@ -27,6 +27,10 @@ Live, linked-from-nav pages (all share `style.css` + `script.js`):
 
 `whoami.html`, `fight.html`, `whiteboard.html`, `jquery.transit.min.js`, `fightStyle.css`, and `projectStyle.css` — pre-theme-picker leftovers (an old single-gradient/jQuery-Transit design, a 2021 joke countdown page, an empty canvas stub) — were removed 2026-08-05 after confirming via recursive grep that nothing else referenced them. `src/CVpic.jpg` and `src/damoPic.jpg` (only ever used by the now-removed `fight.html`) were removed 2026-08-20 for the same reason, once re-confirmed nothing else referenced them either.
 
+### `chessloops-marketing/` (unlinked tool page)
+
+`chessloops-marketing/index.html` is a **copy** of `../ChessLoopsMarketing/index.html` (the canonical source), published here 2026-10-24 so Bradley can generate Instagram/TikTok carousel images from his phone at bradleylund.github.io/chessloops-marketing/. Self-contained (logo is an embedded data URI; html2canvas + fonts via CDN), deliberately not linked from the nav, and marked `noindex`. If the source tool changes, re-copy it (keeping the `robots` meta).
+
 ### Theme System
 
 The core visual feature (replaced an earlier single-gradient design — see the removed-files note above). Four themes, chosen via a modal (`.theme-picker-overlay`) and persisted in `localStorage` under the `theme` key, applied as `data-theme` on `<html>`:
