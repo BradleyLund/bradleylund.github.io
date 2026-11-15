@@ -48,6 +48,10 @@ An inline script in each page's `<head>` applies the saved theme *before* the pa
 
 Inside `.gradients-bg`, six `.gradient` divs (green/pink/blue/frost/celestial/purple) are cycled by `script.js`: the div marked `current` fades in over 7.5s, then gets moved to the end of the stack and the new first div becomes `current` with a fresh transition. Only visible when the `gradients` theme is active. Every live page's markup must have exactly one `.gradient` div marked `current` in its initial HTML, or the cycle never starts (`cycleGradients()` bails out silently if none is found).
 
+### Sliding Tile Puzzle Gate
+
+Every themed page is gated, captcha-style, behind a 3×3 sliding tile puzzle (added 2026-11-15). The inline `<head>` script on each themed page adds `puzzle-locked` to `<html>` unless `sessionStorage.puzzleSolved` is set; that class hides the page (CSS) and is what `script.js` checks to build the `.puzzle-gate` overlay (injected via JS, not in the HTML). Solving it sets the flag, so it's once per browser session, and first-visit theme-picker opening is deferred via `whenUnlocked()` until after the puzzle. Shuffles are 24 random legal moves from solved, so always solvable. `resume-content.html` has no gate (no head script / `script.js`), so the resume iframe isn't double-gated. Any new themed page needs the `puzzle-locked` lines in its head script too.
+
 ### Other script.js behavior
 
 - Active nav-link highlighting (matches `window.location.pathname` against each link's `href`)

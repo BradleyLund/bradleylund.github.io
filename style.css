@@ -354,6 +354,238 @@ nav {
 
 
 /* ═══════════════════════════════════════════════
+   Sliding Tile Puzzle Gate
+   ═══════════════════════════════════════════════ */
+
+/* Set by the inline <head> script until the puzzle is solved this session:
+   hide everything but the gate (and the gradient backdrop) so the page
+   can't be read or clicked behind it */
+html.puzzle-locked body {
+    overflow: hidden;
+}
+
+html.puzzle-locked body > *:not(.puzzle-gate):not(.gradients-bg) {
+    visibility: hidden;
+}
+
+.puzzle-gate {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    overflow-y: auto;
+    background: var(--bg);
+    font-family: var(--font);
+    color: var(--text);
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Let the cycling gradients show through in the gradients theme */
+[data-theme="gradients"] .puzzle-gate {
+    background: rgba(var(--bg-rgb), 0.35);
+}
+
+.puzzle-gate.leaving {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.puzzle-card {
+    width: 100%;
+    max-width: 380px;
+    margin: auto;
+    padding: 2rem 1.75rem 1.5rem;
+    text-align: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--card-shadow);
+    backdrop-filter: blur(var(--nav-blur));
+    -webkit-backdrop-filter: blur(var(--nav-blur));
+    animation: puzzle-in 0.5s ease both;
+    transition: transform 0.5s ease;
+}
+
+.puzzle-gate.leaving .puzzle-card {
+    transform: scale(1.04);
+}
+
+@keyframes puzzle-in {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: none; }
+}
+
+.puzzle-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.puzzle-card h2 {
+    font-family: var(--font-heading);
+    font-weight: var(--heading-weight);
+    letter-spacing: var(--heading-spacing);
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.puzzle-instructions {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.puzzle-board {
+    --gap: 6px;
+    position: relative;
+    width: 100%;
+    max-width: 288px;
+    aspect-ratio: 1;
+    margin: 0 auto;
+    padding: var(--gap);
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.puzzle-tile {
+    position: absolute;
+    top: var(--gap);
+    left: var(--gap);
+    width: calc((100% - 4 * var(--gap)) / 3);
+    height: calc((100% - 4 * var(--gap)) / 3);
+    /* translate by whole cells (tile size + gap) — percentages here are of
+       the tile itself, so 100% + gap is exactly one cell */
+    transform: translate(
+        calc(var(--col) * (100% + var(--gap))),
+        calc(var(--row) * (100% + var(--gap)))
+    );
+    transition: transform 0.18s ease, border-color var(--transition), background var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-weight: var(--heading-weight);
+    font-size: 1.6rem;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: calc(var(--radius) - 2px);
+    cursor: default;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Opaque tiles in the glassy gradients theme so the board stays readable */
+[data-theme="gradients"] .puzzle-tile {
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.puzzle-tile.movable {
+    cursor: pointer;
+    border-color: var(--border-hover);
+}
+
+.puzzle-tile.movable:hover,
+.puzzle-tile.movable:focus-visible {
+    background: var(--surface-hover);
+}
+
+.puzzle-tile:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.puzzle-tile.nudge {
+    animation: puzzle-nudge 0.25s ease;
+}
+
+@keyframes puzzle-nudge {
+    25% { margin-left: -3px; }
+    75% { margin-left: 3px; }
+}
+
+.puzzle-board.solved .puzzle-tile {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* The bold theme's accent is a gradient — paint the solved numbers with it */
+[data-theme="bold"] .puzzle-board.solved .puzzle-tile {
+    background-image: var(--gradient);
+    color: #fff;
+    border-color: transparent;
+}
+
+.puzzle-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 288px;
+    margin: 1rem auto 0;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.puzzle-shuffle {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 0.4rem 0.85rem;
+    font-family: var(--font);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all var(--transition);
+}
+
+.puzzle-shuffle:hover:not(:disabled) {
+    border-color: var(--border-hover);
+    color: var(--text);
+}
+
+.puzzle-shuffle:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.puzzle-status {
+    min-height: 1.3em;
+    margin-top: 0.85rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent);
+}
+
+[data-theme="bold"] .puzzle-status {
+    color: var(--accent-end);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .puzzle-tile,
+    .puzzle-card,
+    .puzzle-gate {
+        transition: none;
+        animation: none;
+    }
+}
+
+
+/* ═══════════════════════════════════════════════
    Theme Picker Modal
    ═══════════════════════════════════════════════ */
 
