@@ -20,6 +20,13 @@
         if (theme) {
           document.documentElement.setAttribute("data-theme", theme);
         }
+        // Lock the page behind the sliding-tile puzzle until it's solved
+        // this session (script.js builds the puzzle; see style.css)
+        try {
+          if (!sessionStorage.getItem("puzzleSolved")) {
+            document.documentElement.classList.add("puzzle-locked");
+          }
+        } catch (e) {}
       })();
     </script>
   </head>
