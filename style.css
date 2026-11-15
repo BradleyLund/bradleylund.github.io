@@ -575,6 +575,31 @@ html.puzzle-locked body > *:not(.puzzle-gate):not(.gradients-bg) {
     color: var(--accent-end);
 }
 
+.puzzle-skip {
+    margin-top: 0.35rem;
+    padding: 0.35rem 0.5rem;
+    background: none;
+    border: none;
+    font-family: var(--font);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    opacity: 0.75;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    transition: opacity var(--transition), color var(--transition);
+}
+
+.puzzle-skip:hover:not(:disabled),
+.puzzle-skip:focus-visible {
+    opacity: 1;
+    color: var(--text);
+}
+
+.puzzle-skip:disabled {
+    visibility: hidden;
+}
+
 @media (prefers-reduced-motion: reduce) {
     .puzzle-tile,
     .puzzle-card,

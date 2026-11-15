@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
           '<button type="button" class="puzzle-shuffle"><i class="fas fa-random"></i> Shuffle</button>' +
         '</div>' +
         '<p class="puzzle-status" aria-live="assertive"></p>' +
+        '<button type="button" class="puzzle-skip">Skip puzzle</button>' +
       '</div>';
     document.body.appendChild(gate);
 
@@ -51,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var movesEl = gate.querySelector('.puzzle-moves');
     var statusEl = gate.querySelector('.puzzle-status');
     var shuffleBtn = gate.querySelector('.puzzle-shuffle');
+    var skipBtn = gate.querySelector('.puzzle-skip');
 
     // One button per numbered tile; they're absolutely positioned and slide
     // between cells via a CSS transform transition
@@ -141,15 +143,18 @@ document.addEventListener('DOMContentLoaded', function () {
       boardEl.classList.add('solved');
       statusEl.textContent = 'Solved in ' + moves + ' move' + (moves === 1 ? '' : 's') + ' — welcome in!';
       shuffleBtn.disabled = true;
-      try { sessionStorage.setItem('puzzleSolved', '1'); } catch (e) {}
+      skipBtn.disabled = true;
+      setTimeout(unlock, 900);
+    }
 
-      setTimeout(function () {
-        gate.classList.add('leaving');
-        document.documentElement.classList.remove('puzzle-locked');
-        siteLocked = false;
-        unlockCallbacks.forEach(function (fn) { fn(); });
-        setTimeout(function () { gate.remove(); }, 500);
-      }, 900);
+    // Open the site (solved or skipped) — remembered for this session
+    function unlock() {
+      try { sessionStorage.setItem('puzzleSolved', '1'); } catch (e) {}
+      gate.classList.add('leaving');
+      document.documentElement.classList.remove('puzzle-locked');
+      siteLocked = false;
+      unlockCallbacks.forEach(function (fn) { fn(); });
+      setTimeout(function () { gate.remove(); }, 500);
     }
 
     boardEl.addEventListener('click', function (e) {
@@ -174,6 +179,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     shuffleBtn.addEventListener('click', shuffle);
+    skipBtn.addEventListener('click', function () {
+      if (!solved) { solved = true; unlock(); }
+    });
 
     shuffle();
   }
